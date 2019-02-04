@@ -117,17 +117,38 @@ class KnowledgeBase(object):
             return []
 
     def kb_retract(self, fact_or_rule):
-        """Retract a fact from the KB
-
-        Args:
-            fact (Fact) - Fact to be retracted
-
-        Returns:
-            None
-        """
         printv("Retracting {!r}", 0, verbose, [fact_or_rule])
         ####################################################
-        # Student code goes here
+
+        if isinstance(fact_or_rule, Fact):
+                self.kb_remove(fact_or_rule)
+        elif isinstance(fact_or_rule, Rule):
+                self.kb_remove(fact_or_rule)
+
+
+    def kb_remove(self, fact_or_rule):
+        if fact_or_rule.supported_by:
+            if fact_or_rule.asserted:
+                # this must be a fact or rule that is both supported and asserted
+                # therefore, must not remove from KB
+                # return None
+                fact_or_rule.asserted = False
+                return
+        if fact_or_rule.supports_facts:
+            for y in fact_or_rule.supports_facts:
+                y.supported_by.remove(fact_or_rule)
+        if not fact_or_rule.supports_facts:
+            for y in fact_or_rule.supports_facts:
+                y.remove(fact_or_rule)
+        if fact_or_rule.supports_rules:
+            for y in fact_or_rule.supports_rules:
+                y.supported_by.remove(fact_or_rule)
+        if not fact_or_rule.supports_facts:
+            for y in fact_or_rule.supports_facts:
+                y.remove(fact_or_rule)
+
+
+
         
 
 class InferenceEngine(object):
@@ -145,4 +166,57 @@ class InferenceEngine(object):
         printv('Attempting to infer from {!r} and {!r} => {!r}', 1, verbose,
             [fact.statement, rule.lhs, rule.rhs])
         ####################################################
-        # Student code goes here
+
+        ## 1. see if the fact statement is supported by 1+ rule through match function LHS = 0
+        ## 2. if it is supported by 1 rule (len 1) then instantiate the fact to the rule
+        ## 3. now there's a binding of the fact and rule, use this to create a new fact
+        ## 4. if the fact statement is supported by more than 1 rule then create a new list, empty (statement =
+        # instantiated list, bindings = match function)
+        ## 5.
+        bindings = match(fact.statement, rule.lhs[0])
+
+        if bindings:
+            supported_by_1 = [[rule, fact]]
+            rhs_new = instantiate(rule.rhs, bindings)
+            if len(rule.lhs) == 1:
+                fact_new = Fact(rhs_new, supported_by=supported_by_1)
+
+                kb.kb_assert(fact_new)
+                rule.supports_facts.append(fact_new)
+                fact.supports_facts.append(fact_new)
+
+            else:
+                lhs_new = []
+                for x in rule.lhs[1: ]:
+                    lhs_new.append(instantiate(x, bindings))
+
+                rule_new = Rule([lhs_new, rhs_new], supported_by=supported_by_1)
+                rule_new.supported_by = [[rule, fact]]
+
+                kb.kb_assert(rule_new)
+                fact.supports_rules.append(rule_new)
+                rule.supports_rules.append(rule_new)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

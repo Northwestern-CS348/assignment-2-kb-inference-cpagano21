@@ -1,0 +1,66 @@
+TESTS WITH ERRORS 
+test11 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 319, in test11
+    KB.kb_retract(fact5)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 139, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+test13 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 370, in test13
+    KB.kb_retract(fact1)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 145, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+test14 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 399, in test14
+    KB.kb_retract(fact1)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 145, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+test4 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 83, in test4
+    KB.kb_retract(fact1)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 145, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+test5 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 121, in test5
+    KB.kb_retract(fact1)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 145, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+test9 (gradingtests.UnitTests)
+Traceback (most recent call last):
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/gradingtests.py", line 258, in test9
+    KB.kb_retract(fact1)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 124, in kb_retract
+    self.kb_remove(fact_or_rule)
+  File "/Users/k2i/academics/automatedgradingapp/app/testing/kb-inference/student_code.py", line 145, in kb_remove
+    y.supported_by.remove(fact_or_rule)
+ValueError: list.remove(x): x not in list
+
+-------------------------------
+TESTS FAILED  
+-------------------------------
+TESTS SKIPPED 
+-------------------------------
